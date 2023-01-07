@@ -41,3 +41,17 @@
     background-color: #CC66FF;
     border-radius: 10px;
 }
+
+.animals {
+    max-width: 50px;
+    border-style: dotted;
+    border-color: black;
+}
+
+.icons {
+    display: grid;
+    border-style: dotted;
+    border-color: black;
+    /* grid-template-columns: 150px 150px 150px 150px 150px; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
