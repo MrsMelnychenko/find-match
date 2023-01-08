@@ -36,39 +36,48 @@ body {
 .time {
     font-weight: 700;
     font-family: 'Seymour One', sans-serif;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
 }
 
 .level {
     display: flex;
     align-items: center;
     font-weight: 700;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     font-family: 'Seymour One', sans-serif;
     background-color: #CC66FF;
     border-radius: 10px;
 }
 
-.result {
-    display: none;
-}
-
 .animals {
     max-width: 100px;
-    background-color: orange;
+
+}
+
+img {
+    border-radius: 10px;
 }
 
 .icons {
     display: grid;
-    max-width: 700px;
-    border-style: dotted;
-    border-color: black;
-    grid-template: repeat(2, 1fr) / repeat(5, 125px);
+    max-width: 800px;
+    border-style: solid;
+    border-color: orange;
+    border-radius: 10px;
+    background-color: orange;
+    grid-template: repeat(4, 100px) / repeat(5, 100px);
     align-items: center;
     justify-content: center;
     justify-items: center;
     margin: 10px;
-    grid-gap: 10px;
+    grid-gap: 5px;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .start {
