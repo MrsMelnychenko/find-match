@@ -1,11 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Seymour+One&display=swap');
 
+body {
+    background-image: url(/img/background.jpg);
+    background-color: #cccccc;
+    max-width: 1920px;
+}
+
 .header {
     font-family: 'Rubik Bubbles', cursive;
     color: #CC66FF;
     font-size: 60px;
     text-align: center;
+    height: 35px;
 }
 
 .timer-level {
@@ -42,18 +49,39 @@
     border-radius: 10px;
 }
 
+.result {
+    display: none;
+}
+
 .animals {
     max-width: 100px;
-    border-style: dotted;
-    border-color: black;
     background-color: orange;
 }
 
 .icons {
     display: grid;
+    max-width: 700px;
     border-style: dotted;
     border-color: black;
-    grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+    grid-template: repeat(2, 1fr) / repeat(5, 125px);
     align-items: center;
+    justify-content: center;
     justify-items: center;
+    margin: 10px;
+    grid-gap: 10px;
+}
+
+.start {
+    border-style: solid;
+    border-radius: 10px;
+    background-color: #CC66FF;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 200px;
+}
+
+.start-btn {
+    font-family: 'Rubik Bubbles', cursive;
+    font-size: 30px;
 }
