@@ -4,6 +4,28 @@ const easyLevel = document.querySelector(".easy-level");
 const mediumLevel = document.querySelector(".medium-level");
 const hardLevel = document.querySelector(".hard-level");
 
+//Function to change grid depending from Choosed level
+function changeGrid() {
+    if (easyLevel.checked === true) {
+        icons.style.gridTemplate = 'repeat(4, 100px) / repeat(5, 100px)';
+        document.querySelectorAll(".animals")
+            .forEach(elem => elem.style.maxWidth = "100px");
+    }
+        if (mediumLevel.checked === true) {
+        icons.style.gridTemplate = 'repeat(5, 80px) / repeat(6, 80px)';
+        document.querySelectorAll(".animals")
+            .forEach(elem => elem.style.maxWidth = "80px");
+    }
+        if (hardLevel.checked === true) {
+        icons.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
+        document.querySelectorAll(".animals")
+            .forEach(elem => elem.style.maxWidth = "70px");
+    }
+}
+mediumLevel.addEventListener("click", changeGrid);
+hardLevel.addEventListener("click", changeGrid);
+easyLevel.addEventListener("click", changeGrid);
+
 //Function to create timer
 let minute = 0;
 let second = 0;
@@ -36,24 +58,3 @@ function returnData(input) {
 }
 startBtn.addEventListener('click', start);
 
-//Function to change grid depending from Choosed level
-function changeGrid() {
-    if (easyLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(4, 100px) / repeat(5, 100px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "100px");
-    }
-        if (mediumLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(5, 80px) / repeat(6, 80px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "80px");
-    }
-        if (hardLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "70px");
-    }
-}
-mediumLevel.addEventListener("click", changeGrid);
-hardLevel.addEventListener("click", changeGrid);
-easyLevel.addEventListener("click", changeGrid);
