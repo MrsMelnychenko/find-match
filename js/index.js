@@ -1,14 +1,32 @@
 const startBtn = document.querySelector(".start")
-const 
 
-function startTimer() {
-let start = Date.now();
-setInterval(function() {
-    let delta = Date.now() - start; // milliseconds elapsed since start
-    …
-    output(Math.floor(delta / 1000)); // in seconds
-    // alternatively just show wall clock time:
-    output(new Date().toUTCString());
-}, 1000);
+let minute = 0;
+let second = 0;
+let millisecond = 0;
+
+let cron;
+
+function start() {
+  pause();
+  cron = setInterval(() => { timer(); }, 10);
 }
-startBtn.addEventListener("click", startTimer);
+function pause() {
+  clearInterval(cron);
+}
+function timer() {
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0;
+    second++;
+  }
+  if (second == 60) {
+    second = 0;
+    minute++;
+  }
+  document.querySelector('.minute').innerText = returnData(minute);
+  document.querySelector('.second').innerText = returnData(second);
+  document.querySelector('.millisecond').innerText = returnData(millisecond);
+}
+function returnData(input) {
+  return input >= 10 ? input : `0${input}`
+}
+startBtn.addEventListener('click', start);
