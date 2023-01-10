@@ -58,3 +58,4 @@ function returnData(input) {
 }
 startBtn.addEventListener('click', start);
 
+// Function to change card image onclick

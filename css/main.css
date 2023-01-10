@@ -61,6 +61,7 @@ body {
 
 .animals {
     max-width: 100px;
+    cursor: pointer;
 }
 
 img {
@@ -80,12 +81,23 @@ img {
     margin: 10px;
     grid-gap: 5px;
     padding: 10px;
+    position: relative;
+}
+
+:hover {
+    transform: rotateY(180deg);
 }
 
 .container {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    backface-visibility: hidden;
 }
 
 .start {
