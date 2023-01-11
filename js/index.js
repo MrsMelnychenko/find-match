@@ -58,4 +58,11 @@ function returnData(input) {
 }
 startBtn.addEventListener('click', start);
 
-// Function to change card image onclick
+// Function to pick random img for card
+const cardBack = document.querySelectorAll('.back');
+function randomImg() {
+   let random = Math.floor(Math.random()*21);
+  cardBack.forEach(elem => elem.style.backgroundImage = `url('/img/${random}.png')`);
+}
+
+cardBack.addEventListener('click', randomImg());

@@ -59,7 +59,7 @@ body {
     width: 270px;
 }
 
-.animals {
+/* .animals {
     max-width: 100px;
     cursor: pointer;
 }
@@ -92,13 +92,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.card-front,
-.card-back {
-    position: absolute;
-    backface-visibility: hidden;
-}
+} */
 
 .start {
     border-style: solid;
@@ -147,4 +141,52 @@ img {
         -o-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+.container {
+    width: 525px;
+    height: 400px;
+    background-color: orange;
+    display: grid;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    grid-template: repeat(4, 100px) / repeat(5, 100px);
+    align-items: center;
+    justify-items: center;
+    margin: 10px;
+    grid-gap: 5px;
+}
+
+.card {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    transition: transform 1500ms;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front {
+    background-image: url(/img/card-back.png);
+}
+
+.back {
+    /* background-image: url(/img/1.png); */
+    transform: rotateY(180deg);
+    width: 100px;
+    height: 100px;
 }
