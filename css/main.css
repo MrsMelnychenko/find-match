@@ -59,41 +59,6 @@ body {
     width: 270px;
 }
 
-/* .animals {
-    max-width: 100px;
-    cursor: pointer;
-}
-
-img {
-    border-radius: 10px;
-}
-
-.icons {
-    display: grid;
-    border-style: solid;
-    border-color: orange;
-    border-radius: 10px;
-    background-color: orange;
-    grid-template: repeat(4, 100px) / repeat(5, 100px);
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    margin: 10px;
-    grid-gap: 5px;
-    padding: 10px;
-    position: relative;
-}
-
-:hover {
-    transform: rotateY(180deg);
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
 .start {
     border-style: solid;
     border-radius: 10px;
@@ -144,8 +109,8 @@ img {
 }
 
 .container {
-    width: 525px;
-    height: 400px;
+    /* min-width: 525px;
+    min-height: 400px; */
     background-color: orange;
     display: grid;
     border-style: solid;
@@ -185,7 +150,6 @@ img {
 }
 
 .back {
-    /* background-image: url(/img/1.png); */
     transform: rotateY(180deg);
     width: 100px;
     height: 100px;

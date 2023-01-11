@@ -3,28 +3,8 @@ const icons = document.querySelector(".icons");
 const easyLevel = document.querySelector(".easy-level");
 const mediumLevel = document.querySelector(".medium-level");
 const hardLevel = document.querySelector(".hard-level");
-
-//Function to change grid depending from Choosed level
-function changeGrid() {
-    if (easyLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(4, 100px) / repeat(5, 100px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "100px");
-    }
-        if (mediumLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(5, 80px) / repeat(6, 80px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "80px");
-    }
-        if (hardLevel.checked === true) {
-        icons.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
-        document.querySelectorAll(".animals")
-            .forEach(elem => elem.style.maxWidth = "70px");
-    }
-}
-mediumLevel.addEventListener("click", changeGrid);
-hardLevel.addEventListener("click", changeGrid);
-easyLevel.addEventListener("click", changeGrid);
+const cardContainer = document.querySelector(".container");
+const cardBack = document.querySelectorAll('.back');
 
 //Function to create timer
 let minute = 0;
@@ -59,10 +39,47 @@ function returnData(input) {
 startBtn.addEventListener('click', start);
 
 // Function to pick random img for card
-const cardBack = document.querySelectorAll('.back');
-function randomImg() {
-   let random = Math.floor(Math.random()*21);
-  cardBack.forEach(elem => elem.style.backgroundImage = `url('/img/${random}.png')`);
-}
+// function randomImg() {
+//    let random = Math.floor(Math.random()*21);
+//   cardBack.forEach(elem => elem.style.backgroundImage = `url('/img/${random}.png')`);
+// }
 
-cardBack.addEventListener('click', randomImg());
+// cardBack.addEventListener('click', randomImg());
+
+//Function to change grid depending from Choosed level
+function changeGrid() {
+  let grid = 0;
+    if (easyLevel.checked === true) {
+  document.querySelector(".container").innerHTML = "";
+      grid = 20;
+      document.querySelector(".container").innerHTML = "";
+    cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
+    for (let i = 0; i < grid; i++) {
+      cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
+    }
+    }
+  if (mediumLevel.checked === true) {
+    grid = 30;
+    document.querySelector(".container").innerHTML = "";
+    cardContainer.style.gridTemplate = 'repeat(5, 70px) / repeat(6, 70px)';
+    for (let i = 0; i < grid; i++) {
+      cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
+      let random = Math.floor(Math.random()*21);
+  cardBack.forEach(elem => elem.style.backgroundImage = `url('/img/${random}.png')`);
+    }
+    }
+  if (hardLevel.checked === true) {
+    grid = 42;
+    document.querySelector(".container").innerHTML = "";
+        cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
+    for (let i = 0; i < grid; i++) {
+      cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
+    }
+    }
+}
+mediumLevel.addEventListener("click", changeGrid);
+hardLevel.addEventListener("click", changeGrid);
+easyLevel.addEventListener("click", changeGrid);
+
+
+
