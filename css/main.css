@@ -109,8 +109,6 @@ body {
 }
 
 .container {
-    /* min-width: 525px;
-    min-height: 400px; */
     background-color: orange;
     display: grid;
     border-style: solid;
@@ -131,7 +129,7 @@ body {
     transform-style: preserve-3d;
 }
 
-.card:hover {
+.flip {
     cursor: pointer;
     transform: rotateY(180deg);
 }
@@ -150,7 +148,7 @@ body {
 }
 
 .back {
-    transform: rotateY(180deg);
+    /* transform: rotateY(180deg); */
     width: 100px;
     height: 100px;
 }
