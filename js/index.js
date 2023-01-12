@@ -44,15 +44,15 @@ startBtn.addEventListener('click', start);
 //Function to change grid depending from Choosed level
 function changeGrid() {
   let grid = 0;
-    if (easyLevel.checked === true) {
-  document.querySelector(".container").innerHTML = "";
-      grid = 20;
-      document.querySelector(".container").innerHTML = "";
-    cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
-    for (let i = 0; i < grid; i++) {
-      cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
-    }
-    }
+  //   if (easyLevel.checked === true) {
+  // document.querySelector(".container").innerHTML = "";
+  //     grid = 20;
+  //     document.querySelector(".container").innerHTML = "";
+  //   cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
+  //   for (let i = 0; i < grid; i++) {
+  //     cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
+  //   }
+  //   }
   if (mediumLevel.checked === true) {
     grid = 10;
     document.querySelector(".container").innerHTML = "";
@@ -61,16 +61,18 @@ function changeGrid() {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
       let random = Math.floor(Math.random() * 21);
       document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).addEventListener('click', flip);
+      
     }
     }
-  if (hardLevel.checked === true) {
-    grid = 20;
-    document.querySelector(".container").innerHTML = "";
-        cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
-    for (let i = 0; i < grid; i++) {
-      cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
-    }
-    }
+  // if (hardLevel.checked === true) {
+  //   grid = 20;
+  //   document.querySelector(".container").innerHTML = "";
+  //       cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
+  //   for (let i = 0; i < grid; i++) {
+  //     cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
+  //   }
+  //   }
 }
 mediumLevel.addEventListener("click", changeGrid);
 hardLevel.addEventListener("click", changeGrid);
@@ -97,5 +99,5 @@ function flip() {
 // cardBack.addEventListener("click", flip);
 // card.addEventListener("click", flip);
 
-cards.forEach(card => card.addEventListener('click', flip));
+// cards.forEach(card => card.addEventListener('click', flip));
 // card.addEventListener('click', flip);
