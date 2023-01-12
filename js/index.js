@@ -5,7 +5,9 @@ const mediumLevel = document.querySelector(".medium-level");
 const hardLevel = document.querySelector(".hard-level");
 const cardContainer = document.querySelector(".container");
 const cardBack = document.querySelector('.back');
+const cardFront = document.querySelector('.front');
 const card = document.querySelector('.card');
+const cards = document.querySelectorAll('.card');
 
 //Function to create timer
 let minute = 0;
@@ -75,7 +77,25 @@ hardLevel.addEventListener("click", changeGrid);
 easyLevel.addEventListener("click", changeGrid);
 
 // Function to flip cards
+
+
+// function flip() {
+//   cards.forEach(el => {
+//     el.classList.toggle("flip");
+//   })
+// }
+
 function flip() {
-  card.classList.add("flip");
+  if (this.classList.contains('flip')) {
+    this.classList.remove('flip')
+  } else {
+    this.classList.add('flip');
+  }
 }
-card.addEventListener("click", flip);
+
+// cardFront.addEventListener("click", flip);
+// cardBack.addEventListener("click", flip);
+// card.addEventListener("click", flip);
+
+cards.forEach(card => card.addEventListener('click', flip));
+// card.addEventListener('click', flip);

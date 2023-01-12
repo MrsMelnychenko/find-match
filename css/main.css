@@ -119,6 +119,7 @@ body {
     justify-items: center;
     margin: 10px;
     grid-gap: 5px;
+    grid-template: repeat(4, 70px) / repeat(5, 70px);
 }
 
 .card {
@@ -130,8 +131,9 @@ body {
 }
 
 .flip {
-    cursor: pointer;
-    transform: rotateY(180deg);
+    /* cursor: pointer;
+    transform: rotateY(180deg); */
+    transform: translateZ(0px) rotateY(180deg)
 }
 
 .front,
