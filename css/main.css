@@ -131,9 +131,7 @@ body {
 }
 
 .flip {
-    /* cursor: pointer;
-    transform: rotateY(180deg); */
-    transform: translateZ(0px) rotateY(180deg)
+    transform: translateZ(0px) rotateY(180deg);
 }
 
 .front,

@@ -8,6 +8,7 @@ const cardBack = document.querySelector('.back');
 const cardFront = document.querySelector('.front');
 const card = document.querySelector('.card');
 const cards = document.querySelectorAll('.card');
+const header = document.querySelector(".header");
 
 //Function to create timer
 let minute = 0;
@@ -39,40 +40,46 @@ function timer() {
 function returnData(input) {
   return input >= 10 ? input : `0${input}`
 }
-startBtn.addEventListener('click', start);
+// startBtn.addEventListener('click', start);
+
 
 //Function to change grid depending from Choosed level
 function changeGrid() {
   let grid = 0;
-  //   if (easyLevel.checked === true) {
-  // document.querySelector(".container").innerHTML = "";
-  //     grid = 20;
-  //     document.querySelector(".container").innerHTML = "";
-  //   cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
-  //   for (let i = 0; i < grid; i++) {
-  //     cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
-  //   }
-  //   }
+    if (easyLevel.checked === true) {
+  document.querySelector(".container").innerHTML = "";
+      grid = 20;
+      document.querySelector(".container").innerHTML = "";
+    cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
+    for (let i = 0; i < grid; i++) {
+     cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
+      let random = Math.floor(Math.random() * 20);
+      document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).addEventListener('click', flip);
+    }
+    }
   if (mediumLevel.checked === true) {
-    grid = 10;
+    grid = 30;
     document.querySelector(".container").innerHTML = "";
     cardContainer.style.gridTemplate = 'repeat(5, 70px) / repeat(6, 70px)';
     for (let i = 0; i < grid; i++) {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      let random = Math.floor(Math.random() * 21);
+      let random = Math.floor(Math.random() * 20);
+      document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).addEventListener('click', flip);      
+    }
+    }
+  if (hardLevel.checked === true) {
+    grid = 42;
+    document.querySelector(".container").innerHTML = "";
+        cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
+    for (let i = 0; i < grid; i++) {
+      cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
+      let random = Math.floor(Math.random() * 20);
       document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
       document.getElementById(i).addEventListener('click', flip);
-      
     }
     }
-  // if (hardLevel.checked === true) {
-  //   grid = 20;
-  //   document.querySelector(".container").innerHTML = "";
-  //       cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
-  //   for (let i = 0; i < grid; i++) {
-  //     cardContainer.insertAdjacentHTML('beforeEnd', '<div class="card"><div class="front"></div><div class="back"></div></div>');
-  //   }
-  //   }
 }
 mediumLevel.addEventListener("click", changeGrid);
 hardLevel.addEventListener("click", changeGrid);
@@ -80,24 +87,56 @@ easyLevel.addEventListener("click", changeGrid);
 
 // Function to flip cards
 
-
-// function flip() {
-//   cards.forEach(el => {
-//     el.classList.toggle("flip");
-//   })
-// }
-
 function flip() {
-  if (this.classList.contains('flip')) {
-    this.classList.remove('flip')
-  } else {
-    this.classList.add('flip');
-  }
+  this.classList.toggle('flip');
 }
 
-// cardFront.addEventListener("click", flip);
-// cardBack.addEventListener("click", flip);
-// card.addEventListener("click", flip);
+// function that flips all cards and shows all img on playground
 
-// cards.forEach(card => card.addEventListener('click', flip));
-// card.addEventListener('click', flip);
+startBtn.addEventListener('click', showAll);
+header.addEventListener('click', closeAll);
+
+function showAll() {
+  let idCounter = 0;
+  if (easyLevel.checked === true) {
+    idCounter = 20;
+    for (let j = 0; j < idCounter; j++) {
+      document.getElementById(`${j}`).click();
+    }
+  }
+  if (mediumLevel.checked === true) {
+    idCounter = 30;
+    for (let j = 0; j < idCounter; j++) {
+      document.getElementById(`${j}`).click();
+    }
+  }
+  if (hardLevel.checked === true) {
+    idCounter = 42;
+    for (let j = 0; j < idCounter; j++) {
+      document.getElementById(`${j}`).click();
+    }
+  }
+  setTimeout(() => header.click(), 3000);
+}
+
+function closeAll() {
+  let idCounter = 0;
+  if (easyLevel.checked === true) {
+    idCounter = 20;
+    for (let k = 0; k < idCounter; k++) {
+      document.getElementById(`${k}`).click();
+    }
+  }
+  if (mediumLevel.checked === true) {
+    idCounter = 30;
+    for (let k = 0; k < idCounter; k++) {
+      document.getElementById(`${k}`).click();
+    }
+  }
+  if (hardLevel.checked === true) {
+    idCounter = 42;
+    for (let k = 0; k < idCounter; k++) {
+      document.getElementById(`${k}`).click();
+    }
+  }
+}
