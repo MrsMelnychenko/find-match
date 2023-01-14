@@ -40,8 +40,15 @@ function timer() {
 function returnData(input) {
   return input >= 10 ? input : `0${input}`
 }
-// startBtn.addEventListener('click', start);
+startBtn.addEventListener('click', start);
 
+
+//Function to display easy-grid by default
+document.addEventListener('DOMContentLoaded', function(){ 
+  setTimeout(function(){
+        easyLevel.click()
+    }, 100)
+})
 
 //Function to change grid depending from Choosed level
 function changeGrid() {
