@@ -1,4 +1,5 @@
-const startBtn = document.querySelector(".start")
+const startBtn = document.querySelector(".start");
+const resetBtn = document.querySelector(".reset");
 const icons = document.querySelector(".icons");
 const easyLevel = document.querySelector(".easy-level");
 const mediumLevel = document.querySelector(".medium-level");
@@ -50,40 +51,75 @@ document.addEventListener('DOMContentLoaded', function(){
     }, 100)
 })
 
+// Function to randomize cards
+const pickRandom = (array, items) => {
+    const clonedArray = [...array]
+    const randomPicks = []
+
+    for (let index = 0; index < items; index++) {
+        const randomIndex = Math.floor(Math.random() * clonedArray.length)
+        
+        randomPicks.push(clonedArray[randomIndex])
+        clonedArray.splice(randomIndex, 1)
+    }
+
+    return randomPicks
+}
+const shuffle = array => {
+    const clonedArray = [...array]
+
+    for (let index = clonedArray.length - 1; index > 0; index--) {
+        const randomIndex = Math.floor(Math.random() * (index + 1))
+        const original = clonedArray[index]
+
+        clonedArray[index] = clonedArray[randomIndex]
+        clonedArray[randomIndex] = original
+    }
+
+    return clonedArray
+}
+
 //Function to change grid depending from Choosed level
 function changeGrid() {
+  const imgNum = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   let grid = 0;
-    if (easyLevel.checked === true) {
-  document.querySelector(".container").innerHTML = "";
-      grid = 20;
+    
+  if (easyLevel.checked === true) {
       document.querySelector(".container").innerHTML = "";
+      grid = 20;
+  const picks = pickRandom(imgNum,(grid / 2));
+      const items = shuffle([...picks, ...picks]);
     cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
     for (let i = 0; i < grid; i++) {
      cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      let random = Math.floor(Math.random() * 20);
-      document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+      document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);
     }
     }
   if (mediumLevel.checked === true) {
     grid = 30;
+    const picks = pickRandom(imgNum,(grid / 2));
+      const items = shuffle([...picks, ...picks]);
     document.querySelector(".container").innerHTML = "";
     cardContainer.style.gridTemplate = 'repeat(5, 70px) / repeat(6, 70px)';
     for (let i = 0; i < grid; i++) {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      let random = Math.floor(Math.random() * 20);
-      document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+       document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);      
     }
     }
   if (hardLevel.checked === true) {
     grid = 42;
+     const picks = pickRandom(imgNum,(grid / 2));
+      const items = shuffle([...picks, ...picks]);
     document.querySelector(".container").innerHTML = "";
         cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
     for (let i = 0; i < grid; i++) {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      let random = Math.floor(Math.random() * 20);
-      document.getElementById(i).style.backgroundImage = `url('/img/${random}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+       document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);
     }
     }
@@ -96,6 +132,7 @@ easyLevel.addEventListener("click", changeGrid);
 
 function flip() {
   this.classList.toggle('flip');
+  console.log(document.getElementById(this.id).style.backgroundImage.toString());  
 }
 
 // function that flips all cards and shows all img on playground
@@ -147,3 +184,8 @@ function closeAll() {
     }
   }
 }
+// Function to reset game
+function reset() {
+ location.reload();
+}
+resetBtn.addEventListener("click", reset);
