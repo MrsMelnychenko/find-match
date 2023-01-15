@@ -7,8 +7,7 @@ const hardLevel = document.querySelector(".hard-level");
 const cardContainer = document.querySelector(".container");
 const cardBack = document.querySelector('.back');
 const cardFront = document.querySelector('.front');
-const card = document.querySelector('.card');
-const cards = document.querySelectorAll('.card');
+const cards = document.querySelector('.card');
 const header = document.querySelector(".header");
 
 //Function to create timer
@@ -129,10 +128,19 @@ hardLevel.addEventListener("click", changeGrid);
 easyLevel.addEventListener("click", changeGrid);
 
 // Function to flip cards
-
+ let flippedCounter = 0;
 function flip() {
   this.classList.toggle('flip');
-  console.log(document.getElementById(this.id).style.backgroundImage.toString());  
+  flippedCounter++;
+  if (flippedCounter > 2) {
+    console.log(timerid);
+    closeAll();
+    this.classList.toggle('flip');
+  }
+  setTimeout(closeAll, 4000);
+  console.log(typeof document.getElementById(this.id).style.backgroundImage.toString());  
+  console.log(flippedCounter);
+  
 }
 
 // function that flips all cards and shows all img on playground
@@ -164,28 +172,16 @@ function showAll() {
 }
 
 function closeAll() {
-  let idCounter = 0;
-  if (easyLevel.checked === true) {
-    idCounter = 20;
-    for (let k = 0; k < idCounter; k++) {
-      document.getElementById(`${k}`).click();
-    }
-  }
-  if (mediumLevel.checked === true) {
-    idCounter = 30;
-    for (let k = 0; k < idCounter; k++) {
-      document.getElementById(`${k}`).click();
-    }
-  }
-  if (hardLevel.checked === true) {
-    idCounter = 42;
-    for (let k = 0; k < idCounter; k++) {
-      document.getElementById(`${k}`).click();
-    }
-  }
+  document.querySelectorAll('.card.flip').forEach(card => {
+    card.classList.remove('flip')
+    flippedCounter = 0;
+    });
 }
 // Function to reset game
 function reset() {
  location.reload();
 }
 resetBtn.addEventListener("click", reset);
+
+// Function to close cards if more than 2 are flipped 
+// function 
