@@ -29,20 +29,22 @@ body {
 .timer {
     display: flex;
     align-items: center;
+    /* justify-content: center; */
     margin-right: 30px;
     background-color: #CC66FF;
     border-radius: 10px;
-    width: 220px;
+    width: 200px;
 }
 
 .timer-icon {
     max-width: 50px;
     padding: 10px 5px 10px 5px;
+    margin-right: 10px;
 }
 
 .minute,
 .second,
-.millisecond {
+.timer-separator {
     font-weight: 500;
     font-family: 'Seymour One', sans-serif;
     padding-right: 10px;
@@ -179,4 +181,13 @@ body {
     transform: rotateY(180deg);
     width: 60px;
     height: 60px;
+}
+
+.startClicked {
+    border-color: grey;
+    background-color: grey;
+}
+
+.startClicked:hover {
+    background-color: grey;
 }

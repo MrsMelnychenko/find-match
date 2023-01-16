@@ -35,7 +35,7 @@ function timer() {
   }
   document.querySelector('.minute').innerText = returnData(minute);
   document.querySelector('.second').innerText = returnData(second);
-  document.querySelector('.millisecond').innerText = returnData(millisecond);
+  // document.querySelector('.millisecond').innerText = returnData(millisecond);
 }
 function returnData(input) {
   return input >= 10 ? input : `0${input}`
@@ -129,19 +129,39 @@ easyLevel.addEventListener("click", changeGrid);
 
 // Function to flip cards
 
-let flippedImg = [];
+let flippedImg= [];
+let flippedData = {};
+
 function flip() {
+
   this.classList.toggle('flip');
-  flippedImg.push(document.getElementById(this.id).style.backgroundImage.toString());
+  // flippedData.id = document.getElementById(this.id).id;
+  // flippedData.img = document.getElementById(this.id).style.backgroundImage;
   
+  flippedImg.push(new Object({
+    id: document.getElementById(this.id).id,
+    img: document.getElementById(this.id).style.backgroundImage+document.getElementById(this.id).className,
+    class: document.getElementById(this.id).className
+  }));
+
   if (flippedImg.length > 2) {
     closeAll();
     this.classList.toggle('flip');
-    flippedImg.push(document.getElementById(this.id).style.backgroundImage.toString());
-  }
-  if (flippedImg[0] === flippedImg[1]) {
-    console.log(document.getElementById(this.id));
+    flippedData = {};
+    flippedImg = [];
+   flippedImg.push(new Object({
+    id: document.getElementById(this.id).id,
+    img: document.getElementById(this.id).style.backgroundImage+document.getElementById(this.id).className,
+    class: document.getElementById(this.id).className
+  }));
     
+  }
+  if (flippedImg.length === 2 && flippedImg[0].img === flippedImg[1].img) {
+
+    setTimeout(() => document.getElementById(flippedImg[0].id).style.visibility = 'hidden', 1000)
+    setTimeout(() => document.getElementById(flippedImg[1].id).style.visibility = 'hidden', 1000)
+    
+    console.log('true');
   }
   console.log(flippedImg);
 }
@@ -149,29 +169,16 @@ function flip() {
 // function that flips all cards and shows all img on playground
 
 startBtn.addEventListener('click', showAll);
-header.addEventListener('click', closeAll);
 
 function showAll() {
-  let idCounter = 0;
-  if (easyLevel.checked === true) {
-    idCounter = 20;
-    for (let j = 0; j < idCounter; j++) {
-      document.getElementById(`${j}`).click();
-    }
-  }
-  if (mediumLevel.checked === true) {
-    idCounter = 30;
-    for (let j = 0; j < idCounter; j++) {
-      document.getElementById(`${j}`).click();
-    }
-  }
-  if (hardLevel.checked === true) {
-    idCounter = 42;
-    for (let j = 0; j < idCounter; j++) {
-      document.getElementById(`${j}`).click();
-    }
-  }
-  setTimeout(() => header.click(), 3000);
+   document.querySelectorAll('.card').forEach(card => {
+    card.classList.add('flip')
+    flippedCounter = 0;
+    flippedImg = [];
+   });
+  setTimeout(closeAll, 2000);
+  startBtn.removeEventListener('click', showAll);
+  startBtn.style.backgroundColor = 'white';
 }
 
 function closeAll() {
@@ -186,6 +193,3 @@ function reset() {
  location.reload();
 }
 resetBtn.addEventListener("click", reset);
-
-// Function to close cards if more than 2 are flipped 
-// function 
