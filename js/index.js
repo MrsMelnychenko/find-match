@@ -128,19 +128,22 @@ hardLevel.addEventListener("click", changeGrid);
 easyLevel.addEventListener("click", changeGrid);
 
 // Function to flip cards
- let flippedCounter = 0;
+
+let flippedImg = [];
 function flip() {
   this.classList.toggle('flip');
-  flippedCounter++;
-  if (flippedCounter > 2) {
-    console.log(timerid);
+  flippedImg.push(document.getElementById(this.id).style.backgroundImage.toString());
+  
+  if (flippedImg.length > 2) {
     closeAll();
     this.classList.toggle('flip');
+    flippedImg.push(document.getElementById(this.id).style.backgroundImage.toString());
   }
-  setTimeout(closeAll, 4000);
-  console.log(typeof document.getElementById(this.id).style.backgroundImage.toString());  
-  console.log(flippedCounter);
-  
+  if (flippedImg[0] === flippedImg[1]) {
+    console.log(document.getElementById(this.id));
+    
+  }
+  console.log(flippedImg);
 }
 
 // function that flips all cards and shows all img on playground
@@ -175,6 +178,7 @@ function closeAll() {
   document.querySelectorAll('.card.flip').forEach(card => {
     card.classList.remove('flip')
     flippedCounter = 0;
+    flippedImg = [];
     });
 }
 // Function to reset game
