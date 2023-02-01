@@ -35,7 +35,6 @@ function timer() {
   }
   document.querySelector('.minute').innerText = returnData(minute);
   document.querySelector('.second').innerText = returnData(second);
-  // document.querySelector('.millisecond').innerText = returnData(millisecond);
 }
 function returnData(input) {
   return input >= 10 ? input : `0${input}`
@@ -91,7 +90,7 @@ function changeGrid() {
     cardContainer.style.gridTemplate = 'repeat(4, 70px) / repeat(5, 70px)';
     for (let i = 0; i < grid; i++) {
      cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('img/${items[i]}.png')`;
       document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);
     }
@@ -104,7 +103,7 @@ function changeGrid() {
     cardContainer.style.gridTemplate = 'repeat(5, 70px) / repeat(6, 70px)';
     for (let i = 0; i < grid; i++) {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('img/${items[i]}.png')`;
        document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);      
     }
@@ -117,7 +116,7 @@ function changeGrid() {
         cardContainer.style.gridTemplate = 'repeat(6, 70px) / repeat(7, 70px)';
     for (let i = 0; i < grid; i++) {
       cardContainer.insertAdjacentHTML('beforeEnd', `<div class="card" id="${i}"><div class="front"></div><div class="back"></div></div>`);
-      document.getElementById(i).style.backgroundImage = `url('/img/${items[i]}.png')`;
+      document.getElementById(i).style.backgroundImage = `url('img/${items[i]}.png')`;
        document.getElementById(i).style.backgroundSize = "contain";
       document.getElementById(i).addEventListener('click', flip);
     }
